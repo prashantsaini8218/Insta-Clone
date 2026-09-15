@@ -1,0 +1,29 @@
+==<Authentication
+     => register(1.user ka data save karna. 2. token user ko dena)
+     =>Login 
+     =>Logout (token blacklisting)
+     =>[OTP BASED REGISTRATION]
+
+
+==>POST
+     => create 
+     =>can see the feed
+     =>like post(collection types)
+     =>save post
+
+
+==>user
+     =>followers
+     =>following
+
+
+
+
+     Post ke andar kya kya aana chaiye
+
+     {
+        caption:String
+        img_url:String
+        user:userid
+        createAt:date time
+     }
