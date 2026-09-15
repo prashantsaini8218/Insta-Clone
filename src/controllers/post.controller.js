@@ -107,7 +107,7 @@ async function  getpostdetailscontroller(req,res) {
             message:"Post not found."
         })
     }
-    const isValiduser= post.user===userid
+    const isValiduser= post.user.toString()===userid
     if (!isValiduser) {
         return res.status(403).json({
             message:"Forbidden content"
