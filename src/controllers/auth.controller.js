@@ -27,7 +27,8 @@ const user  =await usermodel.create({
     profileimg,bio
 })
 const token = jwt.sign({
-    id:user._id
+    id:user._id,
+    username:user.username
 },
 process.env.JWT_SECRET,
 {expiresIn:"1d"}
@@ -68,6 +69,7 @@ if (!isPasswordValid) {
 }
 const token = jwt.sign({
     id:user._id,
+    username:user.username
 },
 process.env.JWT_SECRET,{expiresIn:"1h"})
 res.cookie("token",token)

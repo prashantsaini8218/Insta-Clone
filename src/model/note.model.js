@@ -11,7 +11,7 @@ const noteSchema =new mongoose.Schema({
     },
     password:{
               type:String,
-             unique:[true,"This email is already exist"],
+             required:[true,"Password is required"],
     },
        bio:String,
 

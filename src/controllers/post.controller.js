@@ -3,15 +3,13 @@ const postmodel = require("../model/post.model")
 const Imagekit= require("@imagekit/nodejs")
 const {toFile}=require("@imagekit/nodejs")
 const jwt = require("jsonwebtoken")
-const imagekit= Imagekit({
+const likemodel= require("../model/like.model")
+
+const imagekit=new Imagekit({
     privatekey:process.env.IMAGEKIT_PRIVATE_KEY
 })
 
 async function createpostcontroller(req,res) {
-
-
-
-
 const file =await imagekit.files.upload({
     file:await toFile(Buffer.from(req.file.buffer),'file'),
     fileName:"Test"
@@ -67,8 +65,36 @@ async function  getpostdetailscontroller(req,res) {
         message:"Post Fetche successfully"
     })
 }
+
+
+async function likepostcontroller(req,res) {
+    const username = req.user.username
+    const postid = req.params.postid
+
+    const post =await postmodel.findById(postid)
+    if (!post) {
+        return res.status(404).json({
+            message:"Post not found"
+        })
+    }
+
+    const like =await likemodel.create({
+        post:postid,
+        user:username
+    })
+    res.status(200).json({
+        message:"post like successfully",
+        like
+
+    })
+}
+
+
+
+
+
 module.exports = {
     createpostcontroller,
     getpostcontroller,
-    getpostdetailscontroller
+    getpostdetailscontroller,likepostcontroller
 }

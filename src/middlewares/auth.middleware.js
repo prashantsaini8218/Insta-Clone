@@ -1,7 +1,7 @@
 // request kis user ne ki haqi
 
 
-const jwt = require("jsonwebtoken")
+const jwt = require("jsonwebtoken")                                                                                                      
 
 async function identifyUser(req, res, next) {
     const token = req.cookies.token
@@ -10,7 +10,6 @@ async function identifyUser(req, res, next) {
         return res.status(401).json({
             message: "token not provided, Unauthorized access"
         })
-
     }
     let decoded = null
     try {

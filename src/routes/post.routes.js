@@ -18,4 +18,8 @@ postrouter.get("/",identifyUser,postcontrollers.getpostcontroller)
 postrouter.get("/deatil/:postid",identifyUser,postcontrollers.getpostdetailscontroller)
 
 
+postrouter.post("/like/:postid",identifyUser,postcontrollers.likepostcontroller)
+
+
+
 module.exports=postrouter
